@@ -48,13 +48,13 @@ export class MainPageComponent implements OnInit {
     this.editing = false;
     this.mainPage.name = this.form.get('name')?.value;
     this.mainPage.surname = this.form.get('surname')?.value;
-    this.mainPage.age = this.form.get('age')?.value;
+    this.mainPage.age = this.form.get('age')?.value[0];
     this.mainPage.birthDate = this.form.get('birthDate')?.value;
     this.mainPage.deathDate = this.form.get('deathDate')?.value;
-    //
-    // this.mainPageService.save(this.mainPage).subscribe(data => {
-    //   console.log(data);
-    // });
+
+    this.mainPageService.save(this.mainPage).subscribe(data => {
+      console.log(data);
+    });
 
   }
 
