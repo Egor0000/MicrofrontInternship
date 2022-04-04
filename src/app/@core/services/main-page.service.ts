@@ -8,17 +8,17 @@ import {MainPageDTO} from "../dtos/MainPageDTO";
 })
 export class MainPageService {
   private port = "8443"
-      private url = `localhost:${this.port}/api/service/person-profile`;
+      private url = `http://localhost:${this.port}/api/service/person-profile`;
 
   constructor(
     private http: HttpClient
   ) { }
 
   save(mainPage: MainPageDTO): Observable<MainPageDTO> {
-    return this.http.post<MainPageDTO>(`${this.url}`, mainPage);
+    return this.http.post<MainPageDTO>(`${this.url}/`, mainPage);
   }
 
   getById(id: number): Observable<MainPageDTO> {
-    return this.http.get<MainPageDTO>(`${this.url} \\ ${id}`)
+    return this.http.get<MainPageDTO>(`${this.url}/${id}`)
   }
 }
