@@ -1,0 +1,67 @@
+<mat-card>
+  <div>
+    <mat-slide-toggle (change)="toggleEditing($event)" [checked]="editing">
+      Enable editing
+    </mat-slide-toggle>
+  </div>
+  <div [ngClass]="{'disabled':!editing}">
+    <form [formGroup]="form">
+      <mat-form-field class="display-column" >
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text">
+        <mat-error>
+          {{getError('name')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="display-column">
+        <mat-label>Surname</mat-label>
+        <input matInput formControlName="surname" type="text">
+        <mat-error>
+          {{getError('surname')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="display-column">
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age" type="number" min="18" max="65" value="18">
+        <mat-error>
+          {{getError('age')}}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Enter a lifetime range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Birth date" formControlName="birthDate">
+          <input matEndDate placeholder="Death date" formControlName="deathDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+
+    </form>
+    <div class="control-buttons display-row">
+      <button  mat-raised-button color="primary"  (click)="save()" [disabled]="form.invalid">
+        Save
+      </button>
+
+      <button  mat-raised-button color="warn" (click)="cancel()">
+        Cancel
+      </button>
+
+      <button  mat-raised-button color="warn" style="background-color: green" (click)="openGreeting()">
+        Greeting
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+<ng-template #greetingRef>
+  <div>
+    Hello dear friend
+  </div>
+</ng-template>
+
+

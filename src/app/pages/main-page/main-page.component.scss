@@ -1,0 +1,46 @@
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 5px;
+  }
+}
+
+.full-width {
+  width: 25%;
+}
+
+.display-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.display-row{
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 300px){
+  .display-row{
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    margin-bottom: 5px;
+  }
+}
+
+mat-card {
+  padding: 10px;
+  margin: 10px;
+}
+
+.disabled
+{
+  pointer-events: none;
+  /* for "disabled" effect */
+  opacity: 0.5;
+}
